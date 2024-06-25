@@ -1,0 +1,15 @@
+export const items = [
+  { name: "Item 1", price: 10.99, image: "/images/item1.jpg" },
+  { name: "Item 2", price: 12.99, image: "/images/item2.jpg" },
+  { name: "Item 3", price: 8.49, image: "/images/item3.jpg" },
+  { name: "Item 4", price: 15.0, image: "/images/item4.jpg" },
+  { name: "Item 5", price: 7.25, image: "/images/item5.jpg" },
+  { name: "Item 6", price: 9.99, image: "/images/item6.jpg" },
+  { name: "Item 7", price: 13.49, image: "/images/item7.jpg" },
+  { name: "Item 8", price: 11.0, image: "/images/item8.jpg" },
+  { name: "Item 9", price: 6.99, image: "/images/item9.jpg" },
+  { name: "Item 10", price: 14.5, image: "/images/item10.jpg" },
+  { name: "Item 11", price: 5.75, image: "/images/item11.jpg" },
+  { name: "Item 12", price: 16.99, image: "/images/item12.jpg" },
+  { name: "Item 13", price: 4.99, image: "/images/item13.jpg" },
+];
