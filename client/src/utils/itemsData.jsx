@@ -39,3 +39,21 @@ export const whyData = [
     text: "Our payments are fully secured using encryption",
   },
 ];
+export const foundersData = [
+  {
+    name: "John",
+    image: "/images/john.jpg"
+  },
+  {
+    name: "Susan",
+    image: "/images/susan.jpg"
+  },
+  {
+    name: "Maya",
+    image: "/images/maya.jpg"
+  },
+  {
+    name: "Sarah",
+    image: "/images/sarah.jpg"
+  }
+]
