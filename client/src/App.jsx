@@ -1,20 +1,18 @@
 import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
-import Hero from "./components/home/Hero"
-import NewArrivals from "./components/home/NewArrivals"
-import TopSellers from "./components/home/TopSellers"
-import Why from "./components/home/Why"
-
+import { Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import About from "./pages/About"
 const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <Hero />
-      <NewArrivals />
-      <Why />
-      <TopSellers />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
       <Footer />
-    </div>
+    </>
   )
 }
 
