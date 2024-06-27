@@ -2,7 +2,7 @@ import React from 'react'
 import Heading from './Heading'
 import Text from './Text'
 
-const SingleItem = ({ className, item }) => {
+const SingleItem = ({ className, item, btn }) => {
     return (
         <div className={`card bg-base-100  shadow-xl rounded-none ${className}`}>
             <figure>
@@ -13,7 +13,7 @@ const SingleItem = ({ className, item }) => {
                 <Heading text={item.name} className="font-bold text-xl" />
                 <Text text={item.price} className="text-primary" />
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary">Buy Now</button>
+                    {btn && <button className="btn btn-primary">Buy Now</button>}
                 </div>
             </div>
         </div>

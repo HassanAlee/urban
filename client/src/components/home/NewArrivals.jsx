@@ -7,10 +7,10 @@ const NewArrivals = () => {
     return (
         <div className="m-6">
             <Heading text={"discover new arrivals"} className="text-center text-3xl font-bold uppercase" />
-            <Text text={"Recently added shirts"} className="text-center mt-4 mb-8" />
+            <Text text={"Recently added shirts"} className="text-center mt-4 mb-14" />
             <Grid>
                 {
-                    items.map((item, index) => <SingleItem key={index} item={item} className={"w-full md:w-[24%]"} />)
+                    items.map((item, index) => <SingleItem btn={true} key={index} item={item} className={"w-full md:w-[24%]"} />)
                 }
             </Grid>
         </div>
