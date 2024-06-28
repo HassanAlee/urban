@@ -57,3 +57,26 @@ export const foundersData = [
     image: "/images/sarah.jpg"
   }
 ]
+export const testimonialsData = [
+
+  {
+    name: "Susan",
+    image: "/images/susan.jpg",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis inventore omnis delectus, dicta molestiae voluptate temporibus fugit eos in culpa tenetur ullam magni id quis doloribus voluptatum error ducimus adipisci quos distinctio dolorum autem perferendis?"
+  },
+  {
+    name: "John",
+    image: "/images/john.jpg",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis inventore omnis delectus, dicta molestiae voluptate temporibus fugit eos in culpa tenetur ullam magni id quis doloribus voluptatum error ducimus adipisci quos distinctio dolorum autem perferendis?"
+  },
+  {
+    name: "Maya",
+    image: "/images/maya.jpg",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis inventore omnis delectus, dicta molestiae voluptate temporibus fugit eos in culpa tenetur ullam magni id quis doloribus voluptatum error ducimus adipisci quos distinctio dolorum autem perferendis?"
+  },
+  {
+    name: "Sarah",
+    image: "/images/sarah.jpg",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis inventore omnis delectus, dicta molestiae voluptate temporibus fugit eos in culpa tenetur ullam magni id quis doloribus voluptatum error ducimus adipisci quos distinctio dolorum autem perferendis?"
+  }
+]
