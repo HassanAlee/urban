@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 const About = () => {
     return (
         <>
-            <MedHero />
+            <MedHero text={"about us"} />
             <Us />
             <Founders />
             <Testimonials />
