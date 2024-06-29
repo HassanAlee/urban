@@ -1,9 +1,13 @@
 import Input from "./Input"
+import TextArea from './TextArea'
 
-const FormControl = ({ control }) => {
+const FormControl = ({ control, ...rest }) => {
     switch (control) {
         case "input":
-            return <Input />
+            return <Input {...rest} />
+        case "textarea":
+            return <TextArea {...rest} />
+        default: return null
     }
 }
 
