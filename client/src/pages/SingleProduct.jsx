@@ -20,21 +20,21 @@ const SingleProduct = () => {
                     <Heading text="plain white shirt" className="font-semibold text-2xl capitalize" />
                     <Rating /> <br />
                     <div className="join">
-                        <Text text="$69.0" /> &nbsp;&nbsp;&nbsp;
-                        <Text text={"$59.0"} />
+                        <Text text="$69.0" className="line-through" /> &nbsp;&nbsp;&nbsp;
+                        <Text text={"$59.0"} className="text-purple-900 font-medium" />
                     </div> <br />
-                    <select className="select select-primary w-full max-w-xs outline-0 border-0">
-                        <option disabled selected>What is the best TV show?</option>
-                        <option>Game of Thrones</option>
-                        <option>Lost</option>
-                        <option>Breaking Bad</option>
-                        <option>Walking Dead</option>
+                    <select className="select select-primary w-full max-w-xs outline-0 border-0 my-8">
+                        <option disabled selected>Size</option>
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                        <option>Extra Large</option>
                     </select> <br />
                     <ButtonFilled text={"add to cart"} /> <br />
-                    <div className="join">
-                        <button className="btn join-item">Button</button>
-                        <button className="btn join-item">Button</button>
-                        <button className="btn join-item">Button</button>
+                    <div className="join mt-8 mb-4 md:mb-0">
+                        <img height={"30px"} width={"30px"} className="rounded-full mr-2 hover:cursor-pointer" src="/images/item1.jpg" alt="item_name" />
+                        <img height={"30px"} width={"30px"} className="rounded-full mr-2 hover:cursor-pointer" src="/images/item2.jpg" alt="item_name" />
+                        <img height={"30px"} width={"30px"} className="rounded-full mr-2 hover:cursor-pointer" src="/images/item3.jpg" alt="item_name" />
                     </div>
                 </article>
             </Grid>
