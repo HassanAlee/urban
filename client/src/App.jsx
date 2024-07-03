@@ -8,21 +8,10 @@ import SingleProduct from "./pages/SingleProduct"
 import DashboardLayout from './components/Dashboard/DashboardLayout'
 import Layout from "./components/Layout"
 import Orders from "./pages/Dashboard/Orders"
+import Store from "./pages/Dashboard/Store"
 const App = () => {
   return (
     <>
-      {/* <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/single" element={<SingleProduct />} />
-      </Routes>
-      <Footer />
-      <Routes>
-        <Route path="/dashboard" element={<DashboardLayout />}>
-        </Route>
-      </Routes> */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -32,6 +21,7 @@ const App = () => {
         </Route>
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route path="/dashboard/" element={<Orders />} />
+          <Route path="/dashboard/store" element={<Store />} />
         </Route>
       </Routes>
     </>
