@@ -8,4 +8,7 @@ const hashPassword = async (password, salt) => {
   return await bcryptjs.hash(password, salt);
 };
 
-module.exports = { genSalt, hashPassword };
+const validatePassword = async (password, hash) => {
+  return bcryptjs.compareSync(password, hash);
+};
+module.exports = { genSalt, hashPassword, validatePassword };
