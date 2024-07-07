@@ -5,7 +5,7 @@ const Container = ({ children }) => {
         <section className='h-screen w-full relative flex flex-col items-center justify-center  '>
             <img src="/images/form-bg.jpg" alt="pair_of_shoes" className='h-full w-full object-cover absolute -z-10' />
             {/* {children} */}
-            <div className='bg-white p-4'>
+            <div className='bg-white p-4 w-1/2'>
                 {children}
             </div>
         </section>

@@ -26,10 +26,16 @@ const ContactForm = () => {
                         formik => {
                             return <Form>
                                 <Grid className={"justify-between"}>
-                                    <FormControl control={"input"} name="name" label="Name" />
-                                    <FormControl control={"input"} name="email" label="Email" type="email" />
+                                    <article className="w-full md:w-[49.1%] ">
+                                        <FormControl control={"input"} name="name" label="Name" />
+                                    </article>
+                                    <article className="w-full md:w-[49.1%] ">
+                                        <FormControl control={"input"} name="email" label="Email" type="email" />
+                                    </article>
                                 </Grid>
-                                <FormControl control="textarea" name="message" label="Message" />
+                                <article className="w-full md:w-full mt-4">
+                                    <FormControl control="textarea" name="message" label="Message" />
+                                </article>
                                 <ButtonFilled type="submit" text="send message" optClasses="mt-4" />
                             </Form>
                         }
