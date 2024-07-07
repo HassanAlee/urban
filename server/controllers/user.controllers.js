@@ -13,7 +13,6 @@ const registerUser = async (req, res) => {
     }
     const salt = await passwordUtility.genSalt();
     const hash = await passwordUtility.hashPassword(password, salt);
-    console.log(salt, hash);
     const newUser = new User({ email, password: hash, phone });
     await newUser.save();
     return res.status(201).json({ message: "User created successfully" });

@@ -9,6 +9,7 @@ import DashboardLayout from './components/Dashboard/DashboardLayout'
 import Layout from "./components/Layout"
 import Orders from "./pages/Dashboard/Orders"
 import Store from "./pages/Dashboard/Store"
+import Register from "./pages/auth/Register"
 const App = () => {
   return (
     <>
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/single" element={<SingleProduct />} />
         </Route>
+        <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route path="/dashboard/" element={<Orders />} />
           <Route path="/dashboard/store" element={<Store />} />
