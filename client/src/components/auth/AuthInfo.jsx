@@ -13,10 +13,11 @@ const validationSchema = Yup.object({
     password: Yup.string().required("Password is required"),
     confirmPassword: Yup.string().required("Confirm password is required")
 })
-const onSubmit = (values) => {
-    console.log(values);
-}
-const AuthInfo = () => {
+const AuthInfo = ({ setStep, setData, data }) => {
+    const onSubmit = (values) => {
+        setData({ ...data, ...values })
+        setStep(2)
+    }
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {

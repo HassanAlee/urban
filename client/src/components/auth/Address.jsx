@@ -5,24 +5,26 @@ import FormControl from '../form/FormControl'
 import { ButtonFilled } from '../Buttons'
 import Grid from '../Grid'
 const initialValues = {
-    name: "",
-    phone: ""
+    city: "",
+    street: "",
+    zip: ""
 }
 const validationSchema = Yup.object({
     city: Yup.string().required("City is required"),
     street: Yup.string().required("Street is required"),
     zip: Yup.string().required("ZIP is required")
 })
-const onSubmit = (values) => {
-    console.log(values);
-}
-const Address = () => {
+const Address = ({ data, setData }) => {
+    const onSubmit = (values) => {
+        setData({ ...data, ...values })
+    }
+    console.log(data);
     return (
         <>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                 {
                     formik => {
-                        return <Form className='w-full'>
+                        return <Form className='w-full mt-6'>
                             <Grid className={"justify-between mb-6"}>
                                 <article className="w-full md:w-[47.5%] ">
                                     <FormControl control={"input"} name="city" label="City" type="text" />

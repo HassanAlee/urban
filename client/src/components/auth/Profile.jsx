@@ -11,10 +11,11 @@ const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
     phone: Yup.string().required("Phone is required")
 })
-const onSubmit = (values) => {
-    console.log(values);
-}
-const Profile = () => {
+const Profile = ({ setStep, data, setData }) => {
+    const onSubmit = (values) => {
+        setData({ ...data, ...values })
+        setStep(3)
+    }
     return (
         <>
             <div className='text-center mt-6'>
