@@ -21,6 +21,7 @@ const registerUser = async (req, res) => {
       city,
       zip,
       street,
+      image: req?.file?.path,
     });
     await newUser.save();
     return res.status(201).json({ message: "User created successfully" });

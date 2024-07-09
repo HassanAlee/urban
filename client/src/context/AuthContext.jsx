@@ -7,18 +7,19 @@ const AuthProvider = ({ children }) => {
   //   handle the signup
   const handleSignup = async (values) => {
     setLoading(true);
-    try {
-      const res = await axios.post(
-        "http://localhost:3000/user/register",
-        values
-      );
-      toast.success(res.data.message)
-    } catch (error) {
-      console.log(error);
-      toast.error(error.message || "Something went wrong, please try again");
-    } finally {
-      setLoading(false)
-    }
+    console.log(values);
+    // try {
+    //   const res = await axios.post(
+    //     "http://localhost:3000/user/register",
+    //     values
+    //   );
+    //   toast.success(res.data.message)
+    // } catch (error) {
+    //   console.log(error);
+    //   toast.error(error.message || "Something went wrong, please try again");
+    // } finally {
+    //   setLoading(false)
+    // }
   };
   return (
     <AuthContext.Provider value={{ loading, handleSignup }}>
