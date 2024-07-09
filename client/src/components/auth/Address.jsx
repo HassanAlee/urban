@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik'
 import FormControl from '../form/FormControl'
 import { ButtonFilled } from '../Buttons'
 import Grid from '../Grid'
-import axios from 'axios'
+import { useAuthContext } from '../../context/AuthContext'
 const initialValues = {
     city: "",
     street: "",
@@ -16,13 +16,10 @@ const validationSchema = Yup.object({
     zip: Yup.string().required("ZIP is required")
 })
 const Address = ({ data, setData }) => {
+    const { handleSignup, loading } = useAuthContext()
     const onSubmit = (values) => {
         setData({ ...data, ...values })
         handleSignup({ ...data, ...values })
-    }
-    const handleSignup = async (values) => {
-        const res = await axios.post('http://localhost:3000/user/register', values);
-        console.log(res);
     }
     return (
         <>
@@ -40,7 +37,7 @@ const Address = ({ data, setData }) => {
                             </Grid>
                             <FormControl control="input" type="text" name="street" id="street" label="Home Address" />
                             <div className='text-end mt-6'>
-                                <ButtonFilled type="submit" text={"Register"} />
+                                <ButtonFilled type="submit" text={loading ? "Wait" : "Register"} />
                             </div>
                         </Form>
                     }

@@ -3,6 +3,7 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import FormControl from '../form/FormControl'
 import { ButtonFilled } from '../Buttons'
+import toast from 'react-hot-toast'
 const initialValues = {
     email: "",
     password: "",
@@ -15,6 +16,10 @@ const validationSchema = Yup.object({
 })
 const AuthInfo = ({ setStep, setData, data }) => {
     const onSubmit = (values) => {
+        if (values.password !== values.confirmPassword) {
+            toast.error("Password do not match");
+            return;
+        }
         setData({ ...data, ...values })
         setStep(2)
     }
