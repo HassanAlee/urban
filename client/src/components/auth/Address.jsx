@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik'
 import FormControl from '../form/FormControl'
 import { ButtonFilled } from '../Buttons'
 import Grid from '../Grid'
+import axios from 'axios'
 const initialValues = {
     city: "",
     street: "",
@@ -17,8 +18,12 @@ const validationSchema = Yup.object({
 const Address = ({ data, setData }) => {
     const onSubmit = (values) => {
         setData({ ...data, ...values })
+        handleSignup({ ...data, ...values })
     }
-    console.log(data);
+    const handleSignup = async (values) => {
+        const res = await axios.post('http://localhost:3000/user/register', values);
+        console.log(res);
+    }
     return (
         <>
             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -35,7 +40,7 @@ const Address = ({ data, setData }) => {
                             </Grid>
                             <FormControl control="input" type="text" name="street" id="street" label="Home Address" />
                             <div className='text-end mt-6'>
-                                <ButtonFilled text={"Register"} />
+                                <ButtonFilled type="submit" text={"Register"} />
                             </div>
                         </Form>
                     }
