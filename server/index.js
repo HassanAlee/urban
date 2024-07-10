@@ -6,7 +6,12 @@ const userRoutes = require("./routes/user.routes.js");
 const app = express();
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 // routes
 app.use("/user", userRoutes);
 app.get("/hi", (req, res) => {

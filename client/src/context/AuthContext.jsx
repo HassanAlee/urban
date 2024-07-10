@@ -9,6 +9,7 @@ const AuthProvider = ({ children }) => {
   //   handle the signup
   const handleSignup = async (values) => {
     setLoading(true);
+    console.log(values);
     const formData = new FormData()
     for (let key in values) {
       formData.append(key, values[key])
@@ -16,7 +17,9 @@ const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post(
         "http://localhost:3000/user/register",
-        formData)
+        formData, {
+        withCredentials: true
+      })
       toast.success(res.data.message)
       setTimeout(() => {
         navigate('/')
