@@ -3,9 +3,12 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/user.routes.js");
+const verifyToken = require("./utils/verifyToken.js");
+const cookieParser = require("cookie-parser");
 const app = express();
 // middlewares
 app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -14,9 +17,9 @@ app.use(
 );
 // routes
 app.use("/user", userRoutes);
-app.get("/hi", (req, res) => {
-  res.status(200).send("hehehe");
-});
+// app.get("/hi", verifyToken, (req, res) => {
+//   res.status(200).send("hehehe");
+// });
 // db connection
 const port = process.env.PORT;
 mongoose
