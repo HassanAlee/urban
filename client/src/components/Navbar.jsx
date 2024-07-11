@@ -1,5 +1,7 @@
+import { useAuthContext } from "../context/AuthContext"
 
 const Navbar = () => {
+    const { user } = useAuthContext()
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -70,8 +72,8 @@ const Navbar = () => {
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
                             <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                alt={user?.name}
+                                src={user?.image} />
                         </div>
                     </div>
                     <ul

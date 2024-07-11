@@ -7,4 +7,5 @@ const upload = multer({ storage });
 router.post("/register", upload.single("image"), userControllers.registerUser);
 router.post("/login", userControllers.loginUser);
 router.get("/validate-user", verifyToken, userControllers.validateUser);
+router.get("/get-my-info", verifyToken, userControllers.getMyInfo);
 module.exports = router;

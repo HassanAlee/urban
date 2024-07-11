@@ -21,7 +21,7 @@ const registerUser = async (req, res) => {
       city,
       zip,
       street,
-      image: req?.file?.path,
+      image: "http://localhost:3000/" + req?.file?.path,
     });
     await newUser.save();
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
@@ -78,4 +78,18 @@ const validateUser = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-module.exports = { registerUser, loginUser, validateUser };
+// get my info
+const getMyInfo = async (req, res) => {
+  try {
+    const userId = req.uId;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const { password: pass, ...rest } = user._doc;
+    return res.status(200).json({ user: rest });
+  } catch (error) {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+module.exports = { registerUser, loginUser, validateUser, getMyInfo };

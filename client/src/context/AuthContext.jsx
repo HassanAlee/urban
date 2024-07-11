@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 const AuthContext = React.createContext();
 import toast from "react-hot-toast";
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState(null)
   const navigate = useNavigate()
   //   handle the signup
   const handleSignup = async (values) => {
@@ -31,8 +32,21 @@ const AuthProvider = ({ children }) => {
       setLoading(false)
     }
   };
+  const getMyInfo = async () => {
+    try {
+      const res = await axios.get('http://localhost:3000/user/get-my-info', { withCredentials: true });
+      setUser(res.data.user)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    if (!user) {
+      getMyInfo()
+    }
+  }, [])
   return (
-    <AuthContext.Provider value={{ loading, handleSignup }}>
+    <AuthContext.Provider value={{ loading, handleSignup, user }}>
       {children}
     </AuthContext.Provider>
   );
