@@ -92,4 +92,26 @@ const getMyInfo = async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 };
-module.exports = { registerUser, loginUser, validateUser, getMyInfo };
+
+// logout user
+const logoutUser = async (req, res) => {
+  try {
+    const token = req.cookies.access_token;
+    if (!token) {
+      return res.status(400).json({ message: "Already logged out" });
+    }
+    res
+      .clearCookie("access_token")
+      .status(200)
+      .json({ message: "Loggedout successfully!" });
+  } catch (error) {
+    return res.status(200).json({ message: "Internal server error" });
+  }
+};
+module.exports = {
+  registerUser,
+  loginUser,
+  validateUser,
+  getMyInfo,
+  logoutUser,
+};
