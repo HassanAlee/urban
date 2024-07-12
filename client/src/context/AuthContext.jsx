@@ -32,6 +32,7 @@ const AuthProvider = ({ children }) => {
       setLoading(false)
     }
   };
+  // get the user info
   const getMyInfo = async () => {
     try {
       const res = await axios.get('http://localhost:3000/user/get-my-info', { withCredentials: true });
@@ -40,13 +41,29 @@ const AuthProvider = ({ children }) => {
       console.log(error);
     }
   }
+  // login user
+  const loginUser = async (data) => {
+    try {
+      const res = await axios.post('http://localhost:3000/user/login', data, {
+        withCredentials: true
+      })
+      toast.success(res.data.message)
+      setUser(res.data.user)
+      setTimeout(() => {
+        navigate("/")
+      }, 1500)
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.message || "Something went wrong")
+    }
+  }
   useEffect(() => {
     if (!user) {
       getMyInfo()
     }
   }, [])
   return (
-    <AuthContext.Provider value={{ loading, handleSignup, user }}>
+    <AuthContext.Provider value={{ loading, handleSignup, user, loginUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -34,7 +34,7 @@ const AuthInfo = ({ setStep, setData, data }) => {
                         </article>
                         <FormControl control="input" name="confirmPassword" id="confirmPassword" label="Confirm Password" type="password" />
                         <div className='text-end mt-6'>
-                            <ButtonFilled text={"next"} />
+                            <ButtonFilled text={"next"} type="submit" />
                         </div>
                     </Form>
                 }

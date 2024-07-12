@@ -50,7 +50,7 @@ const Profile = ({ setStep, data, setData }) => {
                                 <FormControl control="input" name="phone" id="phone" label="Phone" type="tel" />
                             </article>
                             <div className='text-end mt-6'>
-                                <ButtonFilled text={"next"} />
+                                <ButtonFilled text={"next"} type="submit" />
                             </div>
                         </Form>
                     }
