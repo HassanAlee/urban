@@ -2,6 +2,7 @@ import { useAuthContext } from "../context/AuthContext"
 
 const Navbar = () => {
     const { user } = useAuthContext()
+    console.log("i am running firdt", user);
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -73,7 +74,7 @@ const Navbar = () => {
                         <div className="w-10 rounded-full">
                             <img
                                 alt={user?.name}
-                                src={user?.image} />
+                                src={user?.image || "/images/user.png"} />
                         </div>
                     </div>
                     <ul

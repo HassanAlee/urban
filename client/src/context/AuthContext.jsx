@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
+  const [navLoader, setNavLoader] = useState(true)
   const [user, setUser] = useState(null)
   const navigate = useNavigate()
   //   handle the signup
@@ -39,6 +40,8 @@ const AuthProvider = ({ children }) => {
       setUser(res.data.user)
     } catch (error) {
       console.log(error);
+    } finally {
+      setNavLoader(false)
     }
   }
   // login user
@@ -63,7 +66,7 @@ const AuthProvider = ({ children }) => {
     }
   }, [])
   return (
-    <AuthContext.Provider value={{ loading, handleSignup, user, loginUser }}>
+    <AuthContext.Provider value={{ loading, handleSignup, user, loginUser, navLoader }}>
       {children}
     </AuthContext.Provider>
   );
