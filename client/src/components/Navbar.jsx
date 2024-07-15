@@ -1,7 +1,20 @@
+import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext"
 
 const Navbar = () => {
     const { user } = useAuthContext()
+    const links = [
+        {
+            text: "home",
+            to: "/"
+        }, {
+            text: "about",
+            to: "/about"
+        }, {
+            text: "contact",
+            to: "contact"
+        }
+    ]
     console.log("i am running firdt", user);
     return (
         <div className="navbar bg-base-100">
@@ -24,18 +37,30 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a>Home</a></li>
-                        <li><a>About</a></li>
-                        <li><a>Contact</a></li>
+                        {
+                            links.map((link, i) => {
+                                return (
+                                    <li key={i} className="capitalize">
+                                        <Link to={link.to}>{link.text}</Link>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">Urban.</a>
             </div>
             <div className="navbar-center hidden lg:flex  justify-between">
                 <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
-                    <li><a>About</a></li>
-                    <li><a>Contact</a></li>
+                    {
+                        links.map((link, i) => {
+                            return (
+                                <li key={i} className="capitalize">
+                                    <Link to={link.to}>{link.text}</Link>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </div>
             <div className="flex-none">
@@ -83,7 +108,6 @@ const Navbar = () => {
                         <li>
                             <a className="justify-between">
                                 Profile
-                                <span className="badge">New</span>
                             </a>
                         </li>
                         <li><a>Settings</a></li>

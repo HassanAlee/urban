@@ -3,8 +3,8 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userRoutes = require("./routes/user.routes.js");
-const verifyToken = require("./utils/verifyToken.js");
 const cookieParser = require("cookie-parser");
+const productRoutes = require("./routes/product.routes.js");
 const path = require("path");
 const app = express();
 // middlewares
@@ -19,6 +19,7 @@ app.use(
 );
 // routes
 app.use("/user", userRoutes);
+app.use("/product", productRoutes);
 // app.get("/hi", verifyToken, (req, res) => {
 //   res.status(200).send("hehehe");
 // });
