@@ -3,7 +3,7 @@ import { useAuthContext } from "../context/AuthContext";
 import Topbar from "./Dashboard/Topbar";
 
 
-const Protected = ({ children }) => {
+const Protected = () => {
     const { user, navLoader } = useAuthContext()
     if (navLoader) {
         return <div className="loading"></div>
@@ -12,10 +12,10 @@ const Protected = ({ children }) => {
         return <Navigate to={"/login"} />
     }
     return (
-        <>
+        <div className="relative min-h-screen">
             <Topbar />
             <Outlet />
-        </>
+        </div>
     )
 };
 

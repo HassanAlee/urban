@@ -15,7 +15,6 @@ const Navbar = () => {
             to: "contact"
         }
     ]
-    console.log("i am running firdt", user);
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">

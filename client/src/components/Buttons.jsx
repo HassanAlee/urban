@@ -6,3 +6,7 @@ export const ButtonOutlined = ({ text }) => {
 export const ButtonFilled = ({ text, optClasses = "", ...rest }) => {
   return <button className={`btn btn-neutral mx-auto rounded-none bg-[#024e82] uppercase font-normal px-6 hover:rounded-md ${optClasses}`} {...rest}>{text}</button>
 }
+
+export const IconButton = ({ text, optClasses = "", icon, ...rest }) => {
+  return <button className={`btn btn-neutral mx-auto rounded-none bg-[#024e82] uppercase font-normal px-6 hover:rounded-md ${optClasses}`} {...rest}>{icon}{text}</button>
+}
