@@ -1,4 +1,6 @@
+import Checkbox from "./Checkbox"
 import Input from "./Input"
+import Select from "./Select"
 import TextArea from './TextArea'
 
 const FormControl = ({ control, ...rest }) => {
@@ -7,6 +9,8 @@ const FormControl = ({ control, ...rest }) => {
             return <Input {...rest} />
         case "textarea":
             return <TextArea {...rest} />
+        case "checkbox":
+            return <Checkbox {...rest} />
         default: return null
     }
 }
