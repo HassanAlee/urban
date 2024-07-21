@@ -7,7 +7,7 @@ import { IoMdAddCircleOutline } from "react-icons/io";
 import AddProductForm from './AddProductForm'
 const AllItems = () => {
     return (
-        <section>
+        <section className='max-h-[98vh] overflow-hidden'>
             <div className='text-end my-4 mr-10'>
                 <IconButton text={"Add Product"} icon={<IoMdAddCircleOutline size={20} />} />
             </div>

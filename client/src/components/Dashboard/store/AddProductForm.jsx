@@ -16,7 +16,7 @@ const AddProductForm = () => {
         discount: '',
         sizes: '',
         description: '',
-        images: []
+        images: null
     };
 
     const validationSchema = Yup.object({
@@ -55,11 +55,12 @@ const AddProductForm = () => {
             .catch(error => console.error('Error loading images:', error));
     };
 
-    const sizesOptions = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"]
+    const sizesOptions = ["XS", "S", "M", "L", "XL", "XXL", "XXXL"];
+    const radioOptions = ["No", "Yes"]
     return (
         <div className='flex items-center justify-center h-full w-full'>
-            <article className='bg-white p-6'>
-                <h1 className='font-bold text-4xl capitalize'>Add New Product</h1>
+            <article className='bg-white p-6 max-h-full overflow-y-scroll'>
+                <h1 className='font-bold text-xl text-center capitalize'>Add New Product</h1>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
@@ -75,17 +76,17 @@ const AddProductForm = () => {
                                     <FormControl control="input" name="price" label="Price" type="text" />
                                 </article>
                             </Grid>
-                            <Grid className="justify-between mb-6">
-                                <article className="w-full md:w-[30%]">
+                            <Grid className="justify-between mb-6 items-center">
+                                <article className="w-full md:w-[47%] ">
                                     <FormControl control="input" name="stock" label="Stock" type="text" />
                                 </article>
-                                <article className="w-full md:w-[30%]">
-                                    <FormControl control="input" name="sale" label="On Sale" type="text" />
-                                </article>
-                                <article className="w-full md:w-[30%]">
-                                    <FormControl control="input" name="discount" label="Discount Price" type="text" />
+                                <article className="w-full md:w-[48%]">
+                                    <FormControl control="input" name="discount" label="Discount" type="text" />
                                 </article>
                             </Grid>
+                            <article className="w-full mb-4 ">
+                                <FormControl control="radio" name="sale" label="On Sale" options={radioOptions} />
+                            </article>
                             <Grid className="justify-between mb-6">
 
                                 <article className="w-full">
@@ -93,13 +94,14 @@ const AddProductForm = () => {
                                 </article>
                             </Grid>
                             <FormControl control="textarea" label="Description" name="description" />
-                            <div>
+                            <div className='mt-4'>
                                 <label htmlFor={"images"} className="capitalize">Product Images</label> <br />
                                 <input
                                     id="images"
                                     name="images"
                                     type="file"
                                     multiple
+                                    className='mt-2'
                                     onChange={(event) => handleFileChange(event, setFieldValue)}
                                 />
                                 <ErrorMessage name="images" component={Error} />
@@ -107,8 +109,8 @@ const AddProductForm = () => {
                             {
                                 imagePreviews.length > 0 && <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 mt-2">
                                     {
-                                        imagePreviews.map((_, i) => <div className="avatar">
-                                            <div key={i} className="w-16 rounded">
+                                        imagePreviews.map((_, i) => <div key={i} className="avatar">
+                                            <div className="w-16 rounded">
                                                 <img src={_} alt='image' />
                                             </div>
                                         </div>)

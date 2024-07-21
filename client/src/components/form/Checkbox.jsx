@@ -10,7 +10,7 @@ const Checkbox = ({ label, name, options, ...rest }) => {
                 {
                     ({ field }) => {
                         return (
-                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+                            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 border p-2">
                                 {options.map((option, i) => (
                                     <div key={i} className="flex items-center">
                                         <input
