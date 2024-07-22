@@ -11,7 +11,6 @@ const AuthProvider = ({ children }) => {
   //   handle the signup
   const handleSignup = async (values) => {
     setLoading(true);
-    console.log(values);
     const formData = new FormData()
     for (let key in values) {
       formData.append(key, values[key])

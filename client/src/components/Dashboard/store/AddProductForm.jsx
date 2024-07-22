@@ -5,9 +5,11 @@ import Grid from '../../Grid';
 import FormControl from '../../form/FormControl';
 import Error from '../../Error';
 import { ButtonFilled } from '../../Buttons';
+import { useAppContext } from '../../../context/AppContext';
 
-const AddProductForm = () => {
+const AddProductForm = ({ setShowForm }) => {
     const [imagePreviews, setImagePreviews] = React.useState([]);
+    const { addProduct, loading } = useAppContext()
     const initialValues = {
         name: '',
         price: '',
@@ -31,14 +33,12 @@ const AddProductForm = () => {
     });
 
     const handleSubmit = (values) => {
-        console.log(values);
-        // Handle form submission
+        addProduct(values).then(() => setTimeout(() => setShowForm(false), 1500))
     };
 
     const handleFileChange = (event, setFieldValue) => {
         const files = event.currentTarget.files;
         setFieldValue('images', files);
-
         const fileArray = Array.from(files).map(file => {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -49,7 +49,6 @@ const AddProductForm = () => {
                 reader.readAsDataURL(file);
             });
         });
-
         Promise.all(fileArray)
             .then(images => setImagePreviews(images))
             .catch(error => console.error('Error loading images:', error));
@@ -80,7 +79,7 @@ const AddProductForm = () => {
                                 <article className="w-full md:w-[47%] ">
                                     <FormControl control="input" name="stock" label="Stock" type="text" />
                                 </article>
-                                <article className="w-full md:w-[48%]">
+                                <article className={`w-full md:w-[48%]`}>
                                     <FormControl control="input" name="discount" label="Discount" type="text" />
                                 </article>
                             </Grid>
@@ -117,7 +116,10 @@ const AddProductForm = () => {
                                     }
                                 </div>
                             }
-                            <ButtonFilled type="submit" text={"add product"} optClasses='mt-4 block' />
+                            <div className='flex mt-2 justify-center gap-2'>
+                                <ButtonFilled disabled={loading} type="submit" text={loading ? "Saving..." : "add product"} optClasses='mt-4 mx-0' />
+                                <ButtonFilled disabled={loading} type="button" text={"Cancel"} optClasses='mt-4 mx-0' onClick={() => setShowForm(false)} />
+                            </div>
                         </Form>
                     )}
                 </Formik>

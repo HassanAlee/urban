@@ -7,7 +7,7 @@ const productControllers = require("../controllers/product.controllers.js");
 router.post(
   "/add-product",
   verifyToken,
-  upload.fields([{ name: "images", maxCount: 10 }]),
+  upload.fields([{ name: "images", maxCount: 6 }]),
   productControllers.addProduct
 );
 module.exports = router;

@@ -2,9 +2,7 @@ const Product = require("../models/product.model.js");
 // add product
 const addProduct = async (req, res) => {
   try {
-    console.log(req.files.images);
-    const imagesArr = req.files.images.map((img) => img.path);
-    console.log(imagesArr);
+    const imagesArr = req?.files?.images?.map((img) => img.path);
     const product = new Product({ ...req.body, images: imagesArr });
     await product.save();
     return res
