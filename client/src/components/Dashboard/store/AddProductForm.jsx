@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import Grid from '../../Grid';
 import FormControl from '../../form/FormControl';
@@ -14,8 +14,8 @@ const AddProductForm = ({ setShowForm }) => {
         name: '',
         price: '',
         stock: '',
-        sale: '',
-        discount: '',
+        sale: 'No',
+        discount: 0,
         sizes: '',
         description: '',
         images: null
@@ -26,14 +26,18 @@ const AddProductForm = ({ setShowForm }) => {
         price: Yup.number().required('Required').positive('Must be a positive number'),
         stock: Yup.number().required('Required').positive('Must be a positive number').integer('Must be an integer'),
         sale: Yup.string().required('Required'),
-        discount: Yup.number().required('Required').positive('Must be a positive number'),
+        // discount: Yup.number().notRequired().positive('Must be a positive number'),
         sizes: Yup.array().of(Yup.string().required()).required('Required'),
         description: Yup.string().required('Required'),
         images: Yup.mixed().required('Required')
     });
 
-    const handleSubmit = (values) => {
-        addProduct(values).then(() => setTimeout(() => setShowForm(false), 1500))
+    const handleSubmit = (values, { resetForm }) => {
+        resetForm()
+        setImagePreviews([])
+        addProduct(values).then(() => {
+            setTimeout(() => setShowForm(false), 1500)
+        })
     };
 
     const handleFileChange = (event, setFieldValue) => {
@@ -75,13 +79,20 @@ const AddProductForm = ({ setShowForm }) => {
                                     <FormControl control="input" name="price" label="Price" type="text" />
                                 </article>
                             </Grid>
-                            <Grid className="justify-between mb-6 items-center">
-                                <article className="w-full md:w-[47%] ">
+                            <Grid className="justify-between mb-6 items-center gap-8">
+                                <article className="w-full flex-1 ">
                                     <FormControl control="input" name="stock" label="Stock" type="text" />
                                 </article>
-                                <article className={`w-full md:w-[48%]`}>
-                                    <FormControl control="input" name="discount" label="Discount" type="text" />
-                                </article>
+                                <Field>
+                                    {
+                                        field => {
+                                            return field.form.values.sale == "Yes" && <article className={`w-full md:w-[48%] flex-1`}>
+                                                <label htmlFor="discount">Discount</label>
+                                                <input type="text" name='discount' id='discount' className='border p-2 w-full' />
+                                            </article>
+                                        }
+                                    }
+                                </Field>
                             </Grid>
                             <article className="w-full mb-4 ">
                                 <FormControl control="radio" name="sale" label="On Sale" options={radioOptions} />
